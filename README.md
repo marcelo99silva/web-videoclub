@@ -1,4 +1,4 @@
-# trabalho
+# VideoClub
 
 ## Project setup
 ```
