@@ -1,0 +1,84 @@
+<template>
+  <div class="teste">
+    <header>
+      <MenuBarAdmin/>
+    </header>
+      <!-- <h1 class="h1">Pagina teste Admin</h1> -->
+<div class="divFilmePainel">
+      <v-container class="container" >
+        <v-layout row col wrap >
+          
+          <v-flex xs10 md6>
+            <v-btn class="btnBorder"  block href="/inserirArtista"  height="200px"  style="font-weight: 600 ; font-size:17px">Inserir Artista</v-btn>
+          </v-flex>
+
+          <v-flex xs10 md6>
+            <v-btn class="btnBorder" block href="/editarRemoverArtistas"  height="200px" style="font-weight: 600; font-size:17px">Remover / Editar  Artistas</v-btn>
+          </v-flex>
+
+        </v-layout>
+
+      </v-container>
+      </div>
+  </div>
+</template>
+
+<script>
+// import MenuBar from '@/components/MenuBar.vue'
+// import MenuBar from '../components/MenuBar'
+//import MenuBar from '../components/MenuBar'
+
+export default {
+    name: 'AdminPainelFilme',
+
+    components: {
+    MenuBarAdmin: () => import("../components/MenuBarAdmin")
+  },
+
+  mounted(){
+      if(!this.$session.has('admin')){
+        window.location = "/admin"
+
+      }
+  },
+  
+  watch: {
+      $route: {
+          immediate: true,
+          handler(to, from) {
+              document.title = to.meta.title || 'Gestão de Filmes | VideoClube';
+          }
+      },
+  }
+}
+
+
+</script>
+
+
+
+<style>
+
+.teste{
+  height: 100vh;
+  background-color: rgb(221, 221, 221);;
+}
+
+.container{
+  margin-top: 150px;
+  /* justify-content: center;
+  align-items: center; */
+
+}
+
+.btnBorder{
+  border: 2px solid black;
+}
+
+.divFilmePainel{
+    /* margin-left: 0; */
+    /* margin-right: 10px; */
+margin: auto;
+
+}
+</style>
